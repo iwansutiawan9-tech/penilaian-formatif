@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LKPD Bahasa Indonesia - Jelajah Kata</title>
+<style>
+:root{--green:#0b9f75;--green2:#087f60;--mint:#e9fbf5;--pink:#ffdfe4;--ink:#24313a;--muted:#64748b;--yellow:#fff36a;--line:#e5e7eb;--white:#fff;--blue:#2563eb;--gold:#f59e0b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(135deg,#eefcf7,#fff7f8 55%,#eef6ff);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(2px);opacity:.45;pointer-events:none}
+body:before{width:180px;height:180px;background:#bff4df;left:-70px;top:120px;animation:float1 7s ease-in-out infinite}
+body:after{width:150px;height:150px;background:#ffd4dc;right:-50px;bottom:100px;animation:float2 9s ease-in-out infinite}
+@keyframes float1{50%{transform:translate(25px,18px) scale(1.08)}} @keyframes float2{50%{transform:translate(-20px,-25px) scale(1.12)}}
+.appbar{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;padding:12px 16px;background:#ffffffee;backdrop-filter:blur(12px);border-bottom:1px solid #dfe7e4}
+.brand{font-weight:900;color:var(--green2);margin-right:auto}
+button{border:0;border-radius:12px;padding:10px 15px;font-weight:800;cursor:pointer;transition:.2s transform,.2s box-shadow}
+button:hover{transform:translateY(-2px);box-shadow:0 8px 18px #00000012}
+button:active{transform:scale(.98)}
+.btn-light{background:#f1f5f9;color:#334155}.btn-green{background:var(--green);color:#fff}.btn-blue{background:var(--blue);color:#fff}.btn-gold{background:#fef3c7;color:#92400e}
+.progress{height:5px;background:#dcefe9}.progress i{display:block;height:100%;width:0;background:var(--green);transition:.25s}
+.sheet{width:min(1000px,calc(100% - 24px));margin:18px auto;background:#fff;border-radius:24px;box-shadow:0 12px 35px #24483b16;padding:28px}
+.hero{display:grid;grid-template-columns:1.7fr .8fr;gap:20px;align-items:stretch}
+.hero-card{background:linear-gradient(135deg,#effcf7,#fff0f3);border-radius:22px;padding:28px}
+.badge{display:inline-block;background:var(--green);color:#fff;padding:7px 12px;border-radius:999px;font-weight:900;font-size:13px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.05;margin:16px 0 8px} h2{margin:0} p{line-height:1.75}
+.mission{background:#f7fafc;border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:center;text-align:center;font-size:18px}
+.mission-icon{font-size:64px;animation:bob 2.8s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-9px) rotate(2deg)}}
+.idgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.field label{display:block;font-size:13px;font-weight:900;color:#475569;margin-bottom:6px}
+input,textarea,select{width:100%;font:inherit;border:2px solid #dbe4e1;border-radius:13px;padding:12px 14px;outline:none;background:#fff}
+input:focus,textarea:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px #0b9f7520}
+.idgrid input{min-height:52px;min-width:0}.idgrid .field{min-width:0}
+.section-title{display:flex;align-items:center;gap:12px;border-bottom:3px solid var(--mint);padding-bottom:12px;margin-bottom:18px}
+.num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-weight:900;flex:0 0 auto}
+.tip{background:#fff9d6;border-left:5px solid #f2d73a;padding:14px 16px;border-radius:12px;margin:18px 0}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:22px 0 8px}
+.footer-note{text-align:center;color:var(--muted);font-size:13px}
+.modal{position:fixed;inset:0;background:#0f172a88;display:none;place-items:center;z-index:50;padding:18px}
+.modal-card{width:min(560px,100%);background:#fff;border-radius:22px;padding:24px;text-align:center;box-shadow:0 20px 60px #0003}
+.spinner{width:42px;height:42px;border:5px solid #dbeee8;border-top-color:var(--green);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.submitted-banner{margin:16px auto;max-width:900px;background:var(--green2);color:#fff;padding:14px 18px;border-radius:16px;text-align:center;font-weight:900}
+.submitted-banner small{display:block;font-weight:600;margin-top:4px}
+.grade-panel{display:none;background:#f8fafc;border:2px solid #dbe4e1;border-radius:20px;padding:20px;margin:18px auto;max-width:900px}
+.grade-panel.show{display:block;animation:appear .25s ease}@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.grade-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grade-grid textarea{min-height:90px}
+.locked{background:#f8fafc!important}
+.teacher-tools{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.teacher-note{font-size:12px;color:#64748b;text-align:center}
+.teacher-status{background:#fff9d6;border-left:5px solid #f2d73a;border-radius:12px;padding:11px 14px;margin:0 0 16px;font-size:14px}
+.grade-select{width:100%;min-height:50px;border:2px solid #dbe4e1;border-radius:13px;padding:10px 14px;font:inherit;font-weight:800;background:#fff}
+.grade-select:disabled{opacity:1;color:#24313a;background:#f8fafc}
+.star-rating{font-size:34px;letter-spacing:4px;text-align:center;margin:14px 0 4px;line-height:1;color:#cbd5e1}
+.scale-hint{text-align:center;color:#64748b;font-size:12px;margin-bottom:4px}
+
+/* STYLING MENJODOHKAN */
+.match-container {background: #fdf4ff; border: 2px dashed #d8b4e2; padding: 24px; border-radius: 16px; margin-bottom: 24px;}
+.match-words-box {display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 24px; background: #fff; padding: 16px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);}
+.match-word-pill {background: var(--blue); color: #fff; font-weight: 800; padding: 8px 16px; border-radius: 99px;}
+.match-row {display: flex; gap: 16px; align-items: center; margin-bottom: 12px; background: #fff; padding: 12px 16px; border-radius: 12px; border: 1px solid #e2e8f0;}
+.match-def {flex-grow: 1; font-size: 15px; font-weight: 600; color: #334155;}
+.match-select {width: 200px; flex-shrink: 0; background: #f8fafc; border-color: #cbd5e1; font-weight: 700; color: var(--blue);}
+
+@media(max-width:700px){
+ .appbar{flex-wrap:wrap}.brand{width:100%;text-align:center}
+ .sheet{padding:18px;border-radius:18px}
+ .hero{grid-template-columns:1fr}.idgrid{grid-template-columns:1fr}
+ .actions button{width:100%}.grade-grid{grid-template-columns:1fr}
+ .match-row {flex-direction: column; align-items: stretch; gap: 8px;}
+ .match-select {width: 100%;}
+}
+@media print{
+ .appbar,.progress,.actions,.modal,.teacher-tools{display:none!important}
+ body{background:#fff}.sheet{box-shadow:none;width:210mm;margin:0;border-radius:0;min-height:297mm}
+ input,textarea,select{border:0!important;box-shadow:none!important}
+}
+</style>
+</head>
+<body><div class="submitted-banner">✅ LEMBAR KERJA MURID DIKIRIM<small>Nama: alma Katrina rindi • 14/9/2026, 11.22.59 • ID: a9083bf9-14d1-44d4-a537-6bcf9f7490e3</small></div>
+
+
+
+<form id="lkpd">
+<section class="sheet">
+  <div class="hero">
+    <div class="hero-card">
+      <span class="badge" style="background:#8b5cf6;">BAB 2: DI BAWAH ATAP</span>
+      <h1>Jelajah Kata</h1>
+      <p><b>Bahasa Indonesia • Kelas IV</b></p>
+      <p>Memahami arti kata-kata baru dari cerita "Kepala Suku Len" melalui kegiatan menjodohkan kata.</p>
+      <div class="idgrid">
+        <div class="field"><label>Nama Lengkap Siswa <span style="color:red">*</span></label><input name="nama" placeholder="Tuliskan nama lengkap..." required="" autocomplete="name" value="alma Katrina rindi " readonly="readonly" disabled="disabled"></div>
+        <div class="field"><label>Hari / Tanggal <span style="color:red">*</span></label><input name="tanggal" placeholder="Contoh: Senin, 11 Agustus 2026" required="" value="senin 14 september 2026 " readonly="readonly" disabled="disabled"></div>
+        <div class="field"><label>Mata Pelajaran</label><input name="mapel" value="Bahasa Indonesia" readonly="readonly" disabled="disabled"></div>
+        <div class="field"><label>Materi Pokok</label><input name="materi" value="Jelajah Kata" readonly="readonly" disabled="disabled"></div>
+      </div>
+    </div>
+    <div class="mission">
+      <div class="mission-icon">🧩📖</div>
+      <b>🎯 Misi Hari Ini</b>
+      <p>Menjodohkan kata baru dengan arti yang tepat.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="section-title"><div class="num" style="background:#8b5cf6;">1</div><h2>A. Kata-Kata Baru</h2></div>
+  <p>Baca kembali cerita "Kepala Suku Len". Kata-kata di bawah ini mungkin baru bagimu. Untuk mengetahui artinya, pasangkan kata dengan arti yang sesuai dan tepat!</p>
+  
+  <div class="tip" style="background:#e0f2fe; border-left-color:#0ea5e9;">
+    💡 <b>Cara Mengerjakan:</b> Bacalah arti kata di sebelah kiri, lalu pilih kata yang tepat pada kotak (menu pilihan) di sebelah kanan. Mulailah dengan kata yang paling mudah!
+  </div>
+
+  <div class="match-container">
+    <div class="match-words-box">
+      <span class="match-word-pill">keran</span>
+      <span class="match-word-pill">membuntuti</span>
+      <span class="match-word-pill">mawar</span>
+      <span class="match-word-pill">sukulen</span>
+      <span class="match-word-pill">molen</span>
+      <span class="match-word-pill">kepala suku</span>
+      <span class="match-word-pill">kabur</span>
+      <span class="match-word-pill">gerimis</span>
+      <span class="match-word-pill">inang</span>
+      <span class="match-word-pill">sistematis</span>
+      <span class="match-word-pill">marga</span>
+    </div>
+
+    <!-- SOAL MENJODOHKAN -->
+    <div class="match-row">
+      <div class="match-def">1. Sejenis tanaman berdaun tebal</div>
+      <select name="jodoh_1" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+    
+    <div class="match-row">
+      <div class="match-def">2. Berlari cepat-cepat, melarikan diri, juga bisa berarti tidak jelas terlihat</div>
+      <select name="jodoh_2" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <div class="match-def">3. Kelompok kekerabatan</div>
+      <select name="jodoh_3" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <div class="match-def">4. Panggilan untuk ibu dalam bahasa Batak</div>
+      <select name="jodoh_4" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <div class="match-def">5. Dengan cara yang teratur</div>
+      <select name="jodoh_5" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <div class="match-def">6. Hujan rintik-rintik</div>
+      <select name="jodoh_6" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <div class="match-def">7. Nama kucing Tigor</div>
+      <select name="jodoh_7" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <div class="match-def">8. Tempat keluar air yang bisa dibuka dan ditutup</div>
+      <select name="jodoh_8" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <div class="match-def">9. Orang yang memimpin suku</div>
+      <select name="jodoh_9" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <div class="match-def">10. Nama jenis bunga</div>
+      <select name="jodoh_10" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <div class="match-def">11. Mengikuti</div>
+      <select name="jodoh_11" class="match-select" readonly="readonly" disabled="disabled">
+        <option value="" selected="selected">-- Pilih Kata --</option>
+        <option value="gerimis">gerimis</option><option value="inang">inang</option><option value="kabur">kabur</option><option value="kepala suku">kepala suku</option><option value="keran">keran</option><option value="marga">marga</option><option value="mawar">mawar</option><option value="membuntuti">membuntuti</option><option value="molen">molen</option><option value="sistematis">sistematis</option><option value="sukulen">sukulen</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="section-title"><div class="num" style="background:#e11d48;">2</div><h2>📝 Refleksi Kata</h2></div>
+  <p>Pilihlah 2 (dua) kata baru yang paling kamu sukai dari daftar di atas, lalu buatlah masing-masing satu kalimat menggunakan kata tersebut!</p>
+  
+  <div class="field" style="margin-bottom:18px">
+    <label>Kalimat 1:</label>
+    <textarea name="kalimat_1" rows="2" placeholder="Contoh: Kucing itu berlari kabur saat mendengar suara petir." readonly="readonly" disabled="disabled">molen kabur  </textarea>
+  </div>
+  <div class="field" style="margin-bottom:18px">
+    <label>Kalimat 2:</label>
+    <textarea name="kalimat_2" rows="2" placeholder="Buatlah kalimat yang menarik..." readonly="readonly" disabled="disabled">inang membuntuti </textarea>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="section-title"><div class="num" style="background:#8b5cf6;">3</div><h2>🌟 Penutup</h2></div>
+  <div class="tip" style="background:#f8fafc;border-left-color:#cbd5e1;text-align:center">
+    Luar biasa! Dengan memperkaya kosa kata, kamu semakin ahli dalam membaca dan memahami cerita. Jangan lupa tambahkan kata-kata ini ke dalam Kartu Kamusmu!
+  </div>
+  
+</section>
+</form>
+
+<!-- PANEL PENILAIAN GURU (SINKRONISASI GOOGLE SHEETS) -->
+<section class="sheet grade-panel" id="gradePanel" style="display: block;">
+  <div class="section-title"><div class="num">★</div><h2>Penilaian Guru</h2></div>
+  <div class="teacher-status" id="teacherStatus">⏳ <b>Sinkronisasi server...</b> Memeriksa data penilaian.</div>
+
+  <div style="background:#fff; border:1px solid #cbd5e1; padding:16px; border-radius:12px; margin-bottom:20px;">
+    <b>Koreksi Otomatis (Bagian Menjodohkan):</b><br>
+    <div id="autoGradeResult" style="margin-top:8px; line-height: 1.8; font-size: 14px;">⏳ Memuat koreksi otomatis...</div>
+  </div>
+
+  <div class="grade-grid">
+    <div class="field">
+      <label>Skala Pemahaman</label>
+      <select id="gradeScale" class="grade-select" disabled="">
+        <option value="">Pilih skala</option>
+        <option value="A">A — Sangat Baik (Semua benar &amp; kalimat sangat tepat)</option>
+        <option value="B">B — Baik (Mayoritas kata dijodohkan dengan benar)</option>
+        <option value="C">C — Cukup (Cukup memahami kosakata)</option>
+        <option value="D">D — Kurang (Banyak salah penjodohan kata)</option>
+      </select>
+      <div class="star-rating" id="starRating" aria-label="Rating bintang">☆☆☆☆</div>
+      <div class="scale-hint">A = 4 ⭐ • B = 3 ⭐ • C = 2 ⭐ • D = 1 ⭐</div>
+    </div>
+    <div class="field"><label>Catatan / Umpan Balik Guru</label><textarea id="gradeNote" rows="4" placeholder="Tuliskan umpan balik..." disabled=""></textarea></div>
+  </div>
+  <div class="teacher-tools">
+    <button type="button" class="btn-green" id="lockGradeBtn" disabled="">🔒 Simpan &amp; Kunci Penilaian</button>
+  </div>
+</section>
+
+
+
+
+
+<script>(function(){
+  const ENDPOINT='https://script.google.com/macros/s/AKfycbze-pehjnDPj3b3nrufGYQj_OPcNf3HtPbturxA4gH8zxpsnSlikGf0kS7WwkIz-drY0Q/exec',SUBJECT='Bahasa Indonesia',FOLDER_NAME='BAHASA INDONESIA',LKPD_ID='Bab2_JelajahKata',SUBMISSION_ID='a9083bf9-14d1-44d4-a537-6bcf9f7490e3';
+  const key='lkpd_grade_'+LKPD_ID+'_'+SUBJECT.replace(/\s+/g,'_')+'_'+SUBMISSION_ID;
+  
+  const scale=document.getElementById('gradeScale'),note=document.getElementById('gradeNote'),lockBtn=document.getElementById('lockGradeBtn'),status=document.getElementById('teacherStatus'),stars=document.getElementById('starRating');
+  let locked=localStorage.getItem(key+'_locked')==='1'; 
+
+  // KUNCI JAWABAN KOREKSI OTOMATIS
+  const answerKey = {
+    jodoh_1: "sukulen",
+    jodoh_2: "kabur",
+    jodoh_3: "marga",
+    jodoh_4: "inang",
+    jodoh_5: "sistematis",
+    jodoh_6: "gerimis",
+    jodoh_7: "molen",
+    jodoh_8: "keran",
+    jodoh_9: "kepala suku",
+    jodoh_10: "mawar",
+    jodoh_11: "membuntuti"
+  };
+
+  let correctCount = 0;
+  let autoHTML = "";
+  for(let i=1; i<=11; i++){
+    let ans = document.querySelector("select[name='jodoh_"+i+"']")?.value || "";
+    if(ans === answerKey['jodoh_'+i]){
+      correctCount++;
+      autoHTML += "No."+i+": ✅ ("+ans+") | ";
+    } else {
+      autoHTML += "No."+i+": ❌ (Kunci: "+answerKey['jodoh_'+i]+") | ";
+    }
+  }
+  document.getElementById('autoGradeResult').innerHTML = "<b>Skor Menjodohkan: " + correctCount + " / 11 Benar</b><br><span style='color:#64748b; font-size:12px;'>" + autoHTML + "</span>";
+
+  function renderStars(v){const n={A:4,B:3,C:2,D:1}[v]||0;stars.textContent='★'.repeat(n)+'☆'.repeat(4-n);stars.style.color=n?'#f59e0b':'#cbd5e1';}
+  
+  function applyState(){
+    if (locked) {
+      scale.disabled = true; note.disabled = true; note.readOnly = true;
+      lockBtn.disabled = true;
+      lockBtn.textContent = '🔒 Penilaian Tersimpan';
+      status.innerHTML = '🔒 <b>Penilaian dikunci.</b> Nilai tersinkronisasi dengan Google Sheets.';
+    } else {
+      scale.disabled = false; note.disabled = false; note.readOnly = false;
+      lockBtn.disabled = false;
+      lockBtn.textContent = '🔒 Simpan & Kunci Nilai';
+      status.innerHTML = '📝 <b>Silakan berikan penilaian.</b> Pilih skala dan tulis catatan, lalu klik Simpan.';
+    }
+    renderStars(scale.value);
+  }
+
+  async function fetchGradeFromServer() {
+    try {
+      const response = await fetch(ENDPOINT + "?action=getGrade&submissionId=" + SUBMISSION_ID);
+      const result = await response.json();
+      
+      if (result.status === 'success' && result.scale) {
+        scale.value = result.scale; note.value = result.note;
+        locked = true; 
+        localStorage.setItem(key+'_locked','1');
+        localStorage.setItem(key, JSON.stringify({scale: result.scale, note: result.note}));
+      } else {
+        let d={}; try{d=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+        scale.value=d.scale||''; note.value=d.note||'';
+      }
+    } catch (error) {
+      console.warn("Gagal menghubungi server, memuat data lokal.", error);
+      let d={}; try{d=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+      scale.value=d.scale||''; note.value=d.note||'';
+    }
+    applyState();
+  }
+
+  fetchGradeFromServer();
+  scale.addEventListener("change",()=>{renderStars(scale.value);});
+
+  lockBtn.onclick=async()=>{
+    if(locked)return;
+    if(!scale.value){alert('Pilih skala penilaian A, B, C, atau D terlebih dahulu.');return;}
+    
+    status.innerHTML="⏳ <b>Menyimpan penilaian...</b> Mengirim data ke server.";
+    lockBtn.disabled=true; scale.disabled=true; note.disabled=true;
+
+    try{
+      const nama=(document.querySelector("input[name='nama']")?.value||'Siswa').trim();
+      const payload={action:'saveGrade',studentName:nama,subject:SUBJECT,folderName:FOLDER_NAME,lkpdId:LKPD_ID,submissionId:SUBMISSION_ID,scale:scale.value,rating:{A:4,B:3,C:2,D:1}[scale.value],note:note.value};
+      
+      await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+      
+      localStorage.setItem(key,JSON.stringify({scale:scale.value,note:note.value}));
+      localStorage.setItem(key+'_locked','1');
+      locked=true;
+      applyState();
+      alert('Penilaian berhasil dikunci dan dikirim ke Server.');
+    }catch(e){
+      alert('Gagal menyimpan ke server. Periksa koneksi internet Anda.');
+      applyState(); 
+    }
+  };
+ })();</script></body></html>

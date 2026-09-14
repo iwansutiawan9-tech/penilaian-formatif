@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LKPD Bahasa Indonesia - Kepala Suku Len</title>
+<style>
+:root{--green:#0b9f75;--green2:#087f60;--mint:#e9fbf5;--pink:#ffdfe4;--ink:#24313a;--muted:#64748b;--yellow:#fff36a;--line:#e5e7eb;--white:#fff;--blue:#2563eb;--gold:#f59e0b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(135deg,#eefcf7,#fff7f8 55%,#eef6ff);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(2px);opacity:.45;pointer-events:none}
+body:before{width:180px;height:180px;background:#bff4df;left:-70px;top:120px;animation:float1 7s ease-in-out infinite}
+body:after{width:150px;height:150px;background:#ffd4dc;right:-50px;bottom:100px;animation:float2 9s ease-in-out infinite}
+@keyframes float1{50%{transform:translate(25px,18px) scale(1.08)}} @keyframes float2{50%{transform:translate(-20px,-25px) scale(1.12)}}
+.appbar{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;padding:12px 16px;background:#ffffffee;backdrop-filter:blur(12px);border-bottom:1px solid #dfe7e4}
+.brand{font-weight:900;color:var(--green2);margin-right:auto}
+button{border:0;border-radius:12px;padding:10px 15px;font-weight:800;cursor:pointer;transition:.2s transform,.2s box-shadow}
+button:hover{transform:translateY(-2px);box-shadow:0 8px 18px #00000012}
+button:active{transform:scale(.98)}
+.btn-light{background:#f1f5f9;color:#334155}.btn-green{background:var(--green);color:#fff}.btn-blue{background:var(--blue);color:#fff}.btn-gold{background:#fef3c7;color:#92400e}
+.progress{height:5px;background:#dcefe9}.progress i{display:block;height:100%;width:0;background:var(--green);transition:.25s}
+.sheet{width:min(1000px,calc(100% - 24px));margin:18px auto;background:#fff;border-radius:24px;box-shadow:0 12px 35px #24483b16;padding:28px}
+.hero{display:grid;grid-template-columns:1.7fr .8fr;gap:20px;align-items:stretch}
+.hero-card{background:linear-gradient(135deg,#effcf7,#fff0f3);border-radius:22px;padding:28px}
+.badge{display:inline-block;background:var(--green);color:#fff;padding:7px 12px;border-radius:999px;font-weight:900;font-size:13px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.05;margin:16px 0 8px} h2{margin:0} p{line-height:1.75}
+.mission{background:#f7fafc;border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:center;text-align:center;font-size:18px}
+.mission-icon{font-size:64px;animation:bob 2.8s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-9px) rotate(2deg)}}
+.idgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.field label{display:block;font-size:13px;font-weight:900;color:#475569;margin-bottom:6px}
+input,textarea,select{width:100%;font:inherit;border:2px solid #dbe4e1;border-radius:13px;padding:12px 14px;outline:none;background:#fff}
+input:focus,textarea:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px #0b9f7520}
+.idgrid input{min-height:52px;min-width:0}.idgrid .field{min-width:0}
+.section-title{display:flex;align-items:center;gap:12px;border-bottom:3px solid var(--mint);padding-bottom:12px;margin-bottom:18px}
+.num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-weight:900;flex:0 0 auto}
+.tip{background:#fff9d6;border-left:5px solid #f2d73a;padding:14px 16px;border-radius:12px;margin:18px 0}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:22px 0 8px}
+.footer-note{text-align:center;color:var(--muted);font-size:13px}
+.modal{position:fixed;inset:0;background:#0f172a88;display:none;place-items:center;z-index:50;padding:18px}
+.modal-card{width:min(560px,100%);background:#fff;border-radius:22px;padding:24px;text-align:center;box-shadow:0 20px 60px #0003}
+.spinner{width:42px;height:42px;border:5px solid #dbeee8;border-top-color:var(--green);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.submitted-banner{margin:16px auto;max-width:900px;background:var(--green2);color:#fff;padding:14px 18px;border-radius:16px;text-align:center;font-weight:900}
+.submitted-banner small{display:block;font-weight:600;margin-top:4px}
+.grade-panel{display:none;background:#f8fafc;border:2px solid #dbe4e1;border-radius:20px;padding:20px;margin:18px auto;max-width:900px}
+.grade-panel.show{display:block;animation:appear .25s ease}@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.grade-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grade-grid textarea{min-height:90px}
+.locked{background:#f8fafc!important}
+.teacher-tools{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.teacher-note{font-size:12px;color:#64748b;text-align:center}
+.teacher-status{background:#fff9d6;border-left:5px solid #f2d73a;border-radius:12px;padding:11px 14px;margin:0 0 16px;font-size:14px}
+.grade-select{width:100%;min-height:50px;border:2px solid #dbe4e1;border-radius:13px;padding:10px 14px;font:inherit;font-weight:800;background:#fff}
+.grade-select:disabled{opacity:1;color:#24313a;background:#f8fafc}
+.star-rating{font-size:34px;letter-spacing:4px;text-align:center;margin:14px 0 4px;line-height:1;color:#cbd5e1}
+.scale-hint{text-align:center;color:#64748b;font-size:12px;margin-bottom:4px}
+
+/* READING SECTION STYLES */
+.reading-box {background: #fff; padding: 24px; border-radius: 16px; border: 2px solid #e2e8f0; font-size: 16px; line-height: 1.8; color: #334155; margin-bottom: 24px;}
+.reading-box p {text-indent: 2em; margin-bottom: 12px;}
+.reading-box .dialog {text-indent: 0; padding-left: 2em;}
+.reading-img-right {float: right; width: 250px; margin: 0 0 16px 20px; border-radius: 12px;}
+.reading-img-left {float: left; width: 250px; margin: 0 20px 16px 0; border-radius: 12px;}
+.reading-img-center {display: block; margin: 20px auto; max-width: 80%; border-radius: 12px;}
+.clearfix::after {content: ""; clear: both; display: table;}
+.highlight{background:linear-gradient(transparent 8%,var(--yellow) 8%,var(--yellow) 92%,transparent 92%);font-weight:900;padding:0 3px;border-radius:4px;}
+.q-row {display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start;}
+.q-num {font-weight: 900; color: var(--green2); width: 24px; flex-shrink: 0; padding-top: 12px;}
+.q-input {flex-grow: 1;}
+
+@media(max-width:700px){
+ .appbar{flex-wrap:wrap}.brand{width:100%;text-align:center}
+ .sheet{padding:18px;border-radius:18px}
+ .hero{grid-template-columns:1fr}.idgrid{grid-template-columns:1fr}
+ .actions button{width:100%}.grade-grid{grid-template-columns:1fr}
+ .reading-img-right, .reading-img-left {float: none; width: 100%; margin: 16px 0;}
+}
+@media print{
+ .appbar,.progress,.actions,.modal,.teacher-tools{display:none!important}
+ body{background:#fff}.sheet{box-shadow:none;width:210mm;margin:0;border-radius:0;min-height:297mm}
+ input,textarea,select{border:0!important;box-shadow:none!important}
+}
+</style>
+</head>
+<body><div class="submitted-banner">✅ LEMBAR KERJA MURID DIKIRIM<small>Nama: HILMY DAFFA KEISYA SAKILA • 14/9/2026, 10.37.43 • ID: 2b6a5f71-bfc9-4bd8-87df-3cfc16d75f0c</small></div>
+
+
+
+<form id="lkpd">
+<section class="sheet">
+  <div class="hero">
+    <div class="hero-card">
+      <span class="badge" style="background:#0284c7;">BAB 2: DI BAWAH ATAP</span>
+      <h1>Kepala Suku Len</h1>
+      <p><b>Bahasa Indonesia • Kelas IV</b></p>
+      <p>Mari menyimak dan membaca cerita dengan saksama untuk memahami ide pokok bacaan.</p>
+      <div class="idgrid">
+        <div class="field"><label>Nama Lengkap Siswa <span style="color:red">*</span></label><input name="nama" placeholder="Tuliskan nama lengkap..." required="" autocomplete="name" value="HILMY DAFFA KEISYA SAKILA" readonly="readonly" disabled="disabled"></div>
+        <div class="field"><label>Hari / Tanggal <span style="color:red">*</span></label><input name="tanggal" placeholder="Contoh: Senin, 11 Agustus 2026" required="" value="SENIN 14 SEPTEMBER 2026 " readonly="readonly" disabled="disabled"></div>
+        <div class="field"><label>Mata Pelajaran</label><input name="mapel" value="Bahasa Indonesia" readonly="readonly" disabled="disabled"></div>
+        <div class="field"><label>Materi Pokok</label><input name="materi" value="Memahami Ide Pokok Cerita" readonly="readonly" disabled="disabled"></div>
+      </div>
+    </div>
+    <div class="mission">
+      <div class="mission-icon">📖💡</div>
+      <b>🎯 Misi Hari Ini</b>
+      <p>Menyimak, membaca, dan menggali informasi dari teks cerita.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="section-title"><div class="num" style="background:#0284c7;">1</div><h2>🎧 Ayo, Menyimak dan Membaca</h2></div>
+  <p>Guru akan membacakan cerita berikut ini. Simaklah dengan baik, atau bacalah teks di bawah ini dengan saksama!</p>
+  
+  <div class="reading-box clearfix">
+    <h3 style="text-align:center; color:#0f172a; font-size:24px; margin-bottom:20px;">Kepala Suku Len</h3>
+    
+    <img src="https://raw.githubusercontent.com/
+iwansutiawan9-tech/lkpd-digital-kelas-4/main/asset/2.1.PNG" alt="Tigor menyiram tanaman" class="reading-img-right">
+    
+    <p>Tigor suka menyiram tanaman karena Tigor suka bermain air. Dengan semprotan di tangannya, Tigor dapat membuat hujan. Jika Tigor memutar kepala semprotan ke kanan, Tigor bisa menyemprotkan air lebih jauh. Jika Tigor memutar kepala semprotan ke kiri, air keluar seperti hujan <span class="highlight">gerimis</span>. Kadang-kadang Tigor dapat melihat pelangi!</p>
+    
+    <p>Sayangnya, Molen tidak suka. Kucing yang suka <span class="highlight">membuntuti</span> Tigor itu takut air. Begitu Tigor menyalakan <span class="highlight">keran</span>, Molen segera kabur dan masuk rumah. Baiklah, Tigor bekerja sendiri saja.</p>
+    
+    <img src="https://raw.githubusercontent.com/
+iwansutiawan9-tech/lkpd-digital-kelas-4/main/asset/2.2.PNG" alt="Inang dan Tigor" class="reading-img-left">
+    
+    <p>Rasanya Tigor ingin menyiram tanaman seharian, apalagi saat cuaca panas seperti ini. Tentu saja <span class="highlight">Inang</span> tidak membolehkannya karena halaman akan menjadi becek. Kata Inang, menyiram tanaman secara berlebihan itu membuang-buang air. Itu tidak baik.</p>
+    
+    <p><i>Syuuur! Syuuuur!</i> Tigor beraksi. Dari tanaman berbunga ungu di pojok kiri sampai pohon mangga besar di kanan, semua disiram Tigor. Tigor melakukannya secara <span class="highlight">sistematis</span> agar tidak ada yang terlewat.</p>
+    
+    <img src="https://raw.githubusercontent.com/
+iwansutiawan9-tech/lkpd-digital-kelas-4/main/asset/2.3.PNG" alt="Tigor dan Kak Tiur" class="reading-img-right">
+    
+    <p>Tigor hampir sampai di tanaman kecil-kecil punya Kak Tiur. Tiba-tiba ...</p>
+    <p class="dialog">"Jangan! Kemarin sudah. Tanaman ini bisa mati kalau sering disiram," kata Kak Tiur.</p>
+    <p class="dialog">"Kenapa?" Tigor heran sekali.</p>
+    <p class="dialog">"Ini sukulen. Lihat, daunnya tebal sekali. Ini untuk menyimpan air. Kalau sering disiram, sukulen bisa membusuk," Kak Tiur menjelaskan.</p>
+    <p class="dialog">"Su-ku-len? Suku Len? Aku baru tahu tanaman juga punya suku," sahut Tigor heran. Tigor tahu keluarga mereka bersuku Batak. Tigor dan Kak Tiur bermarga Siregar, mengikuti <span class="highlight">marga</span> Bapak.</p>
+    <p class="dialog">"Kita bersuku Batak dan bermarga Siregar. Tanaman ini bersuku Len dan bermarga apa?" tanya Tigor.</p>
+    <p>Kak Tiur tertawa. "Bukan begitu. Namanya memang sukulen. Bukan karena punya suku."</p>
+    
+    <img src="https://raw.githubusercontent.com/
+iwansutiawan9-tech/lkpd-digital-kelas-4/main/asset/2.4.PNG" alt="Molen mengendus tanaman" class="reading-img-left">
+    
+    <p>Tigor ikut tertawa. Seru juga seandainya tanaman juga punya suku. Ada suku <span class="highlight">Mawar</span>, suku Mangga, suku Anggrek, dan suku Singkong.</p>
+    <p>Eh, kenapa Molen mengendus-endus?</p>
+    <p>Tigor terpikir, "Hei, namamu juga ada 'Len'. Mo-Len. Hmmm ..., bagaimana kalau kamu menjadi <span class="highlight">Kepala Suku</span>? Kepala Suku Len."</p>
+    <p class="dialog">"Meooong ...," jawab Molen.</p>
+    
+    <p style="text-align:right; font-style:italic; margin-top:20px; color:#64748b; text-indent:0;">Cerita oleh Eva Nukman</p>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="section-title"><div class="num" style="background:#0284c7;">2</div><h2>📝 Menjawab Pertanyaan</h2></div>
+  <p>Jawablah pertanyaan-pertanyaan ini berdasarkan cerita di atas! Kamu harus memahaminya untuk menemukan ide pokok dan detail informasi ceritanya.</p>
+  
+  <div class="q-row">
+    <div class="q-num">1.</div>
+    <div class="q-input field"><label>Mengapa Tigor suka menyiram tanaman?</label><input type="text" name="q_1" placeholder="Jawabanmu..." value="TIGOR KARNA SUKA BERMAIN AIR" readonly="readonly" disabled="disabled"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">2.</div>
+    <div class="q-input field"><label>Apakah yang sering dilakukan Tigor saat menyiram tanaman?</label><input type="text" name="q_2" placeholder="Jawabanmu..." value="RASANYA TIGOR INGIN MENYIRAM TANAMAN SEHARI APALAGI SAAT CUACA PANAS " readonly="readonly" disabled="disabled"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">3.</div>
+    <div class="q-input field"><label>Disebut apakah tanaman Kak Tiur?</label><input type="text" name="q_3" placeholder="Jawabanmu..." value="ADA SUKU MAWAR SUKU MANGGA  SUKU  ANGGREK DAN SUKU SINGKONG " readonly="readonly" disabled="disabled"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">4.</div>
+    <div class="q-input field"><label>Mengapa tanaman Kak Tiur tidak boleh sering disiram?</label><input type="text" name="q_4" placeholder="Jawabanmu..." value="KARNA NANTINY LAYU" readonly="readonly" disabled="disabled"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">5.</div>
+    <div class="q-input field"><label>Siapakah Molen?</label><input type="text" name="q_5" placeholder="Jawabanmu..." value="KUCING" readonly="readonly" disabled="disabled"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">6.</div>
+    <div class="q-input field"><label>Siapakah yang tidak membolehkan Tigor menyiram tanaman secara berlebihan?</label><input type="text" name="q_6" placeholder="Jawabanmu..." value="KAK TIUR " readonly="readonly" disabled="disabled"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">7.</div>
+    <div class="q-input field"><label>Apakah nama suku keluarga Tigor?</label><input type="text" name="q_7" placeholder="Jawabanmu..." value="SUKU BATAK " readonly="readonly" disabled="disabled"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">8.</div>
+    <div class="q-input field"><label>Apakah nama marga Tigor dan Kak Tiur?</label><input type="text" name="q_8" placeholder="Jawabanmu..." value="ibu bapaknya " readonly="readonly" disabled="disabled"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">9.</div>
+    <div class="q-input field"><label>Mengapa Tigor mengira Molen ada hubungannya dengan tanaman Kak Tiur?</label><input type="text" name="q_9" placeholder="Jawabanmu..." value="karna gak ada hubungan apa apa " readonly="readonly" disabled="disabled"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">10.</div>
+    <div class="q-input field"><label>Panggilan apa yang ditawarkan oleh Tigor untuk Molen?</label><input type="text" name="q_10" placeholder="Jawabanmu..." value="SUKU len " readonly="readonly" disabled="disabled"></div>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="section-title"><div class="num" style="background:#e11d48;">3</div><h2>🗣️ Ayo, Berdiskusi</h2></div>
+  <p>Selanjutnya, diskusikan pertanyaan-pertanyaan berikut ini dan tuliskan hasil pemikiranmu secara lengkap.</p>
+  
+  <div class="field" style="margin-bottom:18px">
+    <label>1. Apakah kamu juga punya tugas yang kamu sukai di rumah? Apa yang kamu kerjakan? Apakah kamu melakukannya setiap hari? Apa yang membuat kamu menyukainya?</label>
+    <textarea name="diskusi_1" rows="4" placeholder="Tuliskan pengalamanmu di sini..." readonly="readonly" disabled="disabled">menyapu tapi tidak setiap hair </textarea>
+  </div>
+  <div class="field" style="margin-bottom:18px">
+    <label>2. Apakah Molen memang kepala suku tanaman Kak Tiur? Jelaskan jawabanmu!</label>
+    <textarea name="diskusi_2" rows="3" placeholder="Jelaskan alasanmu..." readonly="readonly" disabled="disabled">tidak molten itu  KUCING </textarea>
+  </div>
+  <div class="field" style="margin-bottom:18px">
+    <label>3. Tigor mengatakan dia bersuku Batak. Dari provinsi manakah suku Batak berasal?</label>
+    <textarea name="diskusi_3" rows="2" placeholder="Tuliskan provinsinya..." readonly="readonly" disabled="disabled">pronvesi  jawa tengah </textarea>
+  </div>
+  <div class="field" style="margin-bottom:18px">
+    <label>4. Tigor menyebut ibunya "Inang". Bagaimana kamu memanggil ibumu?</label>
+    <textarea name="diskusi_4" rows="2" placeholder="Sebutkan panggilan untuk ibumu..." readonly="readonly" disabled="disabled">mamah </textarea>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="section-title"><div class="num" style="background:#0284c7;">4</div><h2>🌟 Penutup</h2></div>
+  <div class="tip" style="background:#f8fafc;border-left-color:#cbd5e1;text-align:center">
+    Kerja bagus! Kamu telah melatih kemampuan menyimak dan merumuskan jawaban untuk menemukan gagasan dalam sebuah cerita.
+  </div>
+  
+  <p class="footer-note">Kamu <b>boleh mengirim LKPD walaupun belum selesai</b>. Guru akan menerima apa pun yang sudah kamu kerjakan.</p>
+</section>
+</form>
+
+<!-- PANEL PENILAIAN GURU (SINKRONISASI GOOGLE SHEETS) -->
+<section class="sheet grade-panel" id="gradePanel" style="display: block;">
+  <div class="section-title"><div class="num">★</div><h2>Penilaian Guru</h2></div>
+  <div class="teacher-status" id="teacherStatus">⏳ <b>Sinkronisasi server...</b> Memeriksa data penilaian.</div>
+
+  <div class="grade-grid">
+    <div class="field">
+      <label>Skala Pemahaman Cerita</label>
+      <select id="gradeScale" class="grade-select" disabled="">
+        <option value="">Pilih skala</option>
+        <option value="A">A — Sangat Baik (Memahami ide pokok &amp; detail sangat tepat)</option>
+        <option value="B">B — Baik (Memahami alur cerita dengan baik)</option>
+        <option value="C">C — Cukup (Jawaban cukup relevan)</option>
+        <option value="D">D — Kurang (Banyak informasi cerita yang terlewat)</option>
+      </select>
+      <div class="star-rating" id="starRating" aria-label="Rating bintang">☆☆☆☆</div>
+      <div class="scale-hint">A = 4 ⭐ • B = 3 ⭐ • C = 2 ⭐ • D = 1 ⭐</div>
+    </div>
+    <div class="field"><label>Catatan / Umpan Balik Guru</label><textarea id="gradeNote" rows="4" placeholder="Tuliskan umpan balik..." disabled=""></textarea></div>
+  </div>
+  <div class="teacher-tools">
+    <button type="button" class="btn-green" id="lockGradeBtn" disabled="">🔒 Simpan &amp; Kunci Penilaian</button>
+  </div>
+  <p class="teacher-note" style="margin-top: 12px;">Data penilaian akan langsung disimpan ke Google Sheets secara permanen.</p>
+</section>
+
+
+
+
+
+<script>(function(){
+  const ENDPOINT='https://script.google.com/macros/s/AKfycbze-pehjnDPj3b3nrufGYQj_OPcNf3HtPbturxA4gH8zxpsnSlikGf0kS7WwkIz-drY0Q/exec',SUBJECT='Bahasa Indonesia',FOLDER_NAME='BAHASA INDONESIA',LKPD_ID='Bab2_KepalaSukuLen',SUBMISSION_ID='2b6a5f71-bfc9-4bd8-87df-3cfc16d75f0c';
+  const key='lkpd_grade_'+LKPD_ID+'_'+SUBJECT.replace(/\s+/g,'_')+'_'+SUBMISSION_ID;
+  
+  const scale=document.getElementById('gradeScale'),note=document.getElementById('gradeNote'),lockBtn=document.getElementById('lockGradeBtn'),status=document.getElementById('teacherStatus'),stars=document.getElementById('starRating');
+  let locked=localStorage.getItem(key+'_locked')==='1'; 
+
+  function renderStars(v){const n={A:4,B:3,C:2,D:1}[v]||0;stars.textContent='★'.repeat(n)+'☆'.repeat(4-n);stars.style.color=n?'#f59e0b':'#cbd5e1';}
+  
+  function applyState(){
+    if (locked) {
+      scale.disabled = true; note.disabled = true; note.readOnly = true;
+      lockBtn.disabled = true;
+      lockBtn.textContent = '🔒 Penilaian Tersimpan';
+      status.innerHTML = '🔒 <b>Penilaian dikunci.</b> Nilai tersinkronisasi dengan Google Sheets.';
+    } else {
+      scale.disabled = false; note.disabled = false; note.readOnly = false;
+      lockBtn.disabled = false;
+      lockBtn.textContent = '🔒 Simpan & Kunci Nilai';
+      status.innerHTML = '📝 <b>Silakan berikan penilaian.</b> Pilih skala dan tulis catatan, lalu klik Simpan.';
+    }
+    renderStars(scale.value);
+  }
+
+  async function fetchGradeFromServer() {
+    try {
+      const response = await fetch(ENDPOINT + "?action=getGrade&submissionId=" + SUBMISSION_ID);
+      const result = await response.json();
+      
+      if (result.status === 'success' && result.scale) {
+        scale.value = result.scale; note.value = result.note;
+        locked = true; 
+        localStorage.setItem(key+'_locked','1');
+        localStorage.setItem(key, JSON.stringify({scale: result.scale, note: result.note}));
+      } else {
+        let d={}; try{d=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+        scale.value=d.scale||''; note.value=d.note||'';
+      }
+    } catch (error) {
+      console.warn("Gagal menghubungi server, memuat data lokal.", error);
+      let d={}; try{d=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+      scale.value=d.scale||''; note.value=d.note||'';
+    }
+    applyState();
+  }
+
+  fetchGradeFromServer();
+
+  scale.addEventListener("change",()=>{renderStars(scale.value);});
+
+  lockBtn.onclick=async()=>{
+    if(locked)return;
+    if(!scale.value){alert('Pilih skala penilaian A, B, C, atau D terlebih dahulu.');return;}
+    
+    status.innerHTML="⏳ <b>Menyimpan penilaian...</b> Mengirim data ke server.";
+    lockBtn.disabled=true; scale.disabled=true; note.disabled=true;
+
+    try{
+      const nama=(document.querySelector("input[name='nama']")?.value||'Siswa').trim();
+      const payload={action:'saveGrade',studentName:nama,subject:SUBJECT,folderName:FOLDER_NAME,lkpdId:LKPD_ID,submissionId:SUBMISSION_ID,scale:scale.value,rating:{A:4,B:3,C:2,D:1}[scale.value],note:note.value};
+      
+      await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+      
+      localStorage.setItem(key,JSON.stringify({scale:scale.value,note:note.value}));
+      localStorage.setItem(key+'_locked','1');
+      locked=true;
+      applyState();
+      alert('Penilaian berhasil dikunci dan dikirim ke Server.');
+    }catch(e){
+      alert('Gagal menyimpan ke server. Periksa koneksi internet Anda.');
+      applyState(); 
+    }
+  };
+ })();</script></body></html>
