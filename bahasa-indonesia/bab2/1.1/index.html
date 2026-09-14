@@ -1,1 +1,664 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hasil Kerja Siswa - Bab 2 LK 1.1 Bahasa Indonesia</title>
 
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-soft: #eff6ff;
+      --accent: #f59e0b;
+      --bg-body: #f8fafc;
+      --surface: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-hover: 0 14px 30px -4px rgba(37, 99, 235, 0.15), 0 8px 12px -4px rgba(0, 0, 0, 0.06);
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header & Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+      color: #ffffff;
+      padding: 3.5rem 1.5rem 4.5rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge-subject {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-weight: 500;
+      opacity: 0.95;
+      max-width: 750px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .materi-box {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.4rem;
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    /* Main Content */
+    .main-wrapper {
+      max-width: 1200px;
+      margin: -2rem auto 3rem;
+      padding: 0 1.25rem;
+      flex: 1;
+      width: 100%;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Search & Filter Toolbar */
+    .toolbar-panel {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 640px) {
+      .toolbar-panel {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .search-input-wrapper i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      background-color: #f8fafc;
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: #fff;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .counter-tag {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Grid Kartu Kelompok */
+    .group-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Kartu Kelompok */
+    .card-group {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-group::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 5px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--primary), #60a5fa);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .card-group:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: #cbd5e1;
+    }
+
+    .card-group:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .group-icon-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      transition: var(--transition);
+    }
+
+    .card-group:hover .group-icon-badge {
+      background: var(--primary);
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+
+    .group-title-wrap h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .group-title-wrap p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .card-meta {
+      background-color: #f8fafc;
+      border: 1px solid #f1f5f9;
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.4rem;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.35rem;
+    }
+
+    .meta-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .meta-value {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Tombol Aksi */
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background-color: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+
+    .btn-action:hover {
+      background-color: var(--primary-dark);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-action i {
+      transition: transform 0.2s ease;
+    }
+
+    .btn-action:hover i {
+      transform: translateX(4px);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      background-color: var(--surface);
+      margin-top: auto;
+    }
+
+    /* Responsive adjustment */
+    @media (max-width: 480px) {
+      .hero-section {
+        padding: 2.5rem 1rem 3.5rem;
+      }
+      .card-group {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero / Header Section -->
+  <header class="hero-section">
+    <div class="hero-container">
+      <div class="badge-subject">
+        <i class="fa-solid fa-book-open"></i> Bahasa Indonesia
+      </div>
+      <h1 class="hero-title">Hasil Kerja Siswa</h1>
+      <p class="hero-subtitle">
+        Lembar Kerja Murid (LKM) &bull; BAB 2 : Di Bawah Atap &bull; Lembar Kerja 1.1
+      </p>
+      <div class="materi-box">
+        <i class="fa-solid fa-lightbulb" style="color: #fbbf24;"></i>
+        <span><strong>Materi Pokok:</strong> Menyimak dan membaca cerita dengan saksama untuk memahami ide pokok bacaan.</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Section -->
+  <main class="main-wrapper">
+    <!-- Toolbar Cari -->
+    <div class="toolbar-panel">
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-box"
+          placeholder="Cari kelompok (contoh: Kelompok 1)..."
+          onkeyup="filterCards()"
+        />
+      </div>
+      <div class="counter-tag">
+        <i class="fa-solid fa-users"></i>
+        <span>Total 7 Kelompok Belajar</span>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="group-grid" id="cardGrid">
+
+      <!-- Card 1 -->
+      <article class="card-group" data-title="kelompok 1">
+        <div>
+          <div class="card-header">
+            <div class="group-icon-badge">
+              <i class="fa-solid fa-people-group"></i>
+            </div>
+            <div class="group-title-wrap">
+              <h3>Kelompok 1</h3>
+              <p>Laporan Format Digital LK 1.1</p>
+            </div>
+          </div>
+          <div class="card-meta">
+            <div class="meta-row">
+              <span>Status Tugas:</span>
+              <span class="meta-value" style="color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Selesai</span>
+            </div>
+            <div class="meta-row">
+              <span>Fokus:</span>
+              <span class="meta-value">Ide Pokok Cerita</span>
+            </div>
+          </div>
+        </div>
+        <a
+          href="https://iwansutiawan9-tech.github.io/penilaian-formatif/bahasa-indonesia/bab2/1.1kelompok-1/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-action"
+        >
+          <span>Lihat Hasil Kerja</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card-group" data-title="kelompok 2">
+        <div>
+          <div class="card-header">
+            <div class="group-icon-badge">
+              <i class="fa-solid fa-people-group"></i>
+            </div>
+            <div class="group-title-wrap">
+              <h3>Kelompok 2</h3>
+              <p>Laporan Format Digital LK 1.1</p>
+            </div>
+          </div>
+          <div class="card-meta">
+            <div class="meta-row">
+              <span>Status Tugas:</span>
+              <span class="meta-value" style="color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Selesai</span>
+            </div>
+            <div class="meta-row">
+              <span>Fokus:</span>
+              <span class="meta-value">Ide Pokok Cerita</span>
+            </div>
+          </div>
+        </div>
+        <a
+          href="https://iwansutiawan9-tech.github.io/penilaian-formatif/bahasa-indonesia/bab2/1.1kelompok-2/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-action"
+        >
+          <span>Lihat Hasil Kerja</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card-group" data-title="kelompok 3">
+        <div>
+          <div class="card-header">
+            <div class="group-icon-badge">
+              <i class="fa-solid fa-people-group"></i>
+            </div>
+            <div class="group-title-wrap">
+              <h3>Kelompok 3</h3>
+              <p>Laporan Format Digital LK 1.1</p>
+            </div>
+          </div>
+          <div class="card-meta">
+            <div class="meta-row">
+              <span>Status Tugas:</span>
+              <span class="meta-value" style="color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Selesai</span>
+            </div>
+            <div class="meta-row">
+              <span>Fokus:</span>
+              <span class="meta-value">Ide Pokok Cerita</span>
+            </div>
+          </div>
+        </div>
+        <a
+          href="https://iwansutiawan9-tech.github.io/penilaian-formatif/bahasa-indonesia/bab2/1.1kelompok-3/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-action"
+        >
+          <span>Lihat Hasil Kerja</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card-group" data-title="kelompok 4">
+        <div>
+          <div class="card-header">
+            <div class="group-icon-badge">
+              <i class="fa-solid fa-people-group"></i>
+            </div>
+            <div class="group-title-wrap">
+              <h3>Kelompok 4</h3>
+              <p>Laporan Format Digital LK 1.1</p>
+            </div>
+          </div>
+          <div class="card-meta">
+            <div class="meta-row">
+              <span>Status Tugas:</span>
+              <span class="meta-value" style="color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Selesai</span>
+            </div>
+            <div class="meta-row">
+              <span>Fokus:</span>
+              <span class="meta-value">Ide Pokok Cerita</span>
+            </div>
+          </div>
+        </div>
+        <a
+          href="https://iwansutiawan9-tech.github.io/penilaian-formatif/bahasa-indonesia/bab2/1.1kelompok-4/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-action"
+        >
+          <span>Lihat Hasil Kerja</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="card-group" data-title="kelompok 5">
+        <div>
+          <div class="card-header">
+            <div class="group-icon-badge">
+              <i class="fa-solid fa-people-group"></i>
+            </div>
+            <div class="group-title-wrap">
+              <h3>Kelompok 5</h3>
+              <p>Laporan Format Digital LK 1.1</p>
+            </div>
+          </div>
+          <div class="card-meta">
+            <div class="meta-row">
+              <span>Status Tugas:</span>
+              <span class="meta-value" style="color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Selesai</span>
+            </div>
+            <div class="meta-row">
+              <span>Fokus:</span>
+              <span class="meta-value">Ide Pokok Cerita</span>
+            </div>
+          </div>
+        </div>
+        <a
+          href="https://iwansutiawan9-tech.github.io/penilaian-formatif/bahasa-indonesia/bab2/1.1kelompok-5/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-action"
+        >
+          <span>Lihat Hasil Kerja</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="card-group" data-title="kelompok 6">
+        <div>
+          <div class="card-header">
+            <div class="group-icon-badge">
+              <i class="fa-solid fa-people-group"></i>
+            </div>
+            <div class="group-title-wrap">
+              <h3>Kelompok 6</h3>
+              <p>Laporan Format Digital LK 1.1</p>
+            </div>
+          </div>
+          <div class="card-meta">
+            <div class="meta-row">
+              <span>Status Tugas:</span>
+              <span class="meta-value" style="color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Selesai</span>
+            </div>
+            <div class="meta-row">
+              <span>Fokus:</span>
+              <span class="meta-value">Ide Pokok Cerita</span>
+            </div>
+          </div>
+        </div>
+        <a
+          href="https://iwansutiawan9-tech.github.io/penilaian-formatif/bahasa-indonesia/bab2/1.1kelompok-6/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-action"
+        >
+          <span>Lihat Hasil Kerja</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 7 -->
+      <article class="card-group" data-title="kelompok 7">
+        <div>
+          <div class="card-header">
+            <div class="group-icon-badge">
+              <i class="fa-solid fa-people-group"></i>
+            </div>
+            <div class="group-title-wrap">
+              <h3>Kelompok 7</h3>
+              <p>Laporan Format Digital LK 1.1</p>
+            </div>
+          </div>
+          <div class="card-meta">
+            <div class="meta-row">
+              <span>Status Tugas:</span>
+              <span class="meta-value" style="color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Selesai</span>
+            </div>
+            <div class="meta-row">
+              <span>Fokus:</span>
+              <span class="meta-value">Ide Pokok Cerita</span>
+            </div>
+          </div>
+        </div>
+        <a
+          href="https://iwansutiawan9-tech.github.io/penilaian-formatif/bahasa-indonesia/bab2/1.1kelompok-7/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-action"
+        >
+          <span>Lihat Hasil Kerja</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; Pembelajaran Digital Bahasa Indonesia &bull; Penilaian Formatif Kurikulum Merdeka</p>
+  </footer>
+
+  <!-- Script Pencarian Instan -->
+  <script>
+    function filterCards() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card-group');
+
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title');
+        if (title.includes(input)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
